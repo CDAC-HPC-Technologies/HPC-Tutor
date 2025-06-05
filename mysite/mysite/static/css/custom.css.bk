@@ -1,0 +1,32 @@
+/* static/css/custom.css */
+
+/* Horizontal menu styles */
+.horizontal-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.horizontal-menu li {
+    display: inline-block;
+    margin-right: 15px; /* Add some spacing between menu items */
+}
+
+.horizontal-menu li:last-child {
+    margin-right: 0; /* Remove right margin from the last menu item */
+}
+
+.horizontal-menu li a {
+    text-decoration: none;
+    color: #000; /* Set the text color for menu items */
+    padding: 5px 10px; /* Add padding around the menu items */
+    border: 1px solid #000; /* Add a border around each menu item */
+    border-radius: 5px; /* Optional: Add rounded corners to the menu items */
+}
+
+.horizontal-menu li a:hover {
+    background-color: #000; /* Set the background color when hovering over menu items */
+    color: #fff; /* Set the text color when hovering over menu items */
+}
+
+

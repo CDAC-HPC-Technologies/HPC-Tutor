@@ -1,0 +1,5 @@
+{% for child in children %}
+    <li><a href="{{ child.attr.redirect_url }}">{{ child.get_menu_title }}</a></li>
+{% endfor %}
+
+

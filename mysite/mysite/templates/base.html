@@ -1,0 +1,130 @@
+{% load i18n cms_tags menu_tags sekizai_tags static %}
+<!DOCTYPE HTML>
+<html lang="{{ LANGUAGE_CODE }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>What is OpenMP</title>
+
+    <meta name="author" content="HPC-TECH">
+    <meta name="description" content="Introduction to OpenMP">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- JS Files -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+
+    {% render_block "css" %}
+
+    <a href="/" id="logo" class="brand-logo">
+        <img src="{% static 'images/hpc.jpg' %}" style="width:100%" />
+    </a>
+
+    <style>
+        body {
+            background-color: white;
+            color: black;
+        }
+
+        pre {
+            margin-left: 1em;
+            padding: 0.5em;
+            background-color: #f0f0f0;
+            border: 1px solid black;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body bgcolor="silver">
+    {% cms_toolbar %}
+    <div class="container-fluid">
+        <div class="row" style="margin-right: -30px; margin-left: -5px; margin-top: 0px;">
+            <div id="content" class="col-sm-6" style="height: 800px; overflow-x: hidden; overflow-y: auto; text-align:justify;">
+                <font size="+1">
+                    <p align="right">
+                        {% block arrowRight %} {% placeholder "arrowRight" or %}
+                        <a href="/" target="_top">Main Page</a>
+                        <a href="#"><span class="glyphicon glyphicon-arrow-right"></span></a>
+                        {% endplaceholder %} {% endblock arrowRight %}
+                    </p>
+
+                    <a name="top"></a>
+
+                    {% block openmpintro-header %} {% placeholder "openmpintro-header" or %}
+                    <h1>Introduction to OpenMP</h1>
+                    {% endplaceholder %} {% endblock openmpintro-header %}
+
+                    {% block openmpintro-content %} {% placeholder "openmpintro-content" or %}
+                    <p><strong>Let's read a bit</strong></p>
+                    <p>OpenMP is a library that supports shared memory multiprocessing. The OpenMP programming model is SMP (symmetric multi-processors, or shared-memory processors): that means when programming with OpenMP all threads share memory and data.</p>
+                    <p>Parallel code with OpenMP marks, through a special directive, sections to be executed in parallel. The part of the code that’s marked to run in parallel will cause threads to form. The main thread is the master thread. The slave threads all run in parallel and run the same code. Each thread executes the parallelized section of the code independently. When a thread finishes, it joins the master. When all threads finished, the master continues with code following the parallel section.</p>
+                    <p>Each thread has an ID attached to it that can be obtained using a runtime library function (called <code>omp_get_thread_num()</code>). The ID of the master thread is 0.</p>
+                    <p>OpenMP supports C, C++ and Fortran. The OpenMP parts in the code are specified using <code>#pragmas</code>.</p>
+                    {% endplaceholder %} {% endblock openmpintro-content %}
+
+                    {% block openmpintro-codeBlock %} {% placeholder "openmpintro-codeBlock" or %}
+                    <!-- You can insert code examples here -->
+                    {% endplaceholder %} {% endblock openmpintro-codeBlock %}
+
+                    <div style="color: blue;">
+                        {% block content %}{% endblock content %}
+                    </div>
+
+                    <br><hr>
+                </font>
+            </div>
+
+            <div class="col-sm-6" style="min-height: 500px;" id="terminal">
+                <iframe
+                    id="iframeid"
+                    src="{{ TERMINAL_IFRAME_URL|default:'#' }}"
+                    width="100%"
+                    height="100%"
+                    frameborder="0"
+                ></iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer" style="background-color: #1b2d48d0;">
+        <div class="copy-right_text">
+            <div class="container">
+                <div class="footer_border"></div>
+                <div class="row">
+                    <div class="col-xl-12">
+                        <p class="copy_right text-center">
+                            &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved by HPC-TECH, CDAC
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleIframeSize() {
+            var iframeContainer = document.getElementById('iframe-container');
+            iframeContainer.classList.toggle('expanded');
+            var isExpanded = iframeContainer.classList.contains('expanded');
+            document.querySelector('.btn-expand').style.display = isExpanded ? 'block' : 'none';
+            document.querySelector('.btn-minimize').style.display = isExpanded ? 'none' : 'block';
+        }
+    </script>
+
+    {% render_block "js" %}
+</body>
+
+</html>
+

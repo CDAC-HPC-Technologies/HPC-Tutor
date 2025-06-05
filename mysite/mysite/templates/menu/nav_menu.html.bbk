@@ -1,0 +1,10 @@
+<!-- templates/menu/linkable_menu_item.html -->
+
+{% load custom_tags %}
+{% load menu_tags %}
+
+{% for child in children %}
+    <li><a href="{% page_attribute "get_absolute_url" child %}">{{ child.get_menu_title }}</a></li>
+{% endfor %}
+
+

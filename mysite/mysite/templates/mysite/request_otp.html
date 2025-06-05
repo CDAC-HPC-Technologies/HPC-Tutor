@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Request OTP</title>
+</head>
+<body>
+    <h2>Request OTP</h2>
+    <form method="post">
+        {% csrf_token %}
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <button type="submit">Send OTP</button>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+    </form>
+</body>
+</html>
+

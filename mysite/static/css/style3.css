@@ -1,0 +1,45 @@
+body {
+    background-color: white;
+    color: black;
+    }
+
+pre {
+    margin-left: 1em;
+    padding: 0.5em;
+    background-color: #f0f0f0;
+    border: 1px solid black;
+}
+h1 {
+    text-align: center;
+    }
+
+.openmpintro .h1 .span{
+    font-family: 'times new roman', times; 
+    color: #0000ff; 
+    font-size: 18pt;    
+    }
+.openmpintro .h1 .p{
+    text-align: justify; 
+    line-height: 150%;
+    font-family: 'Roboto', sans-serif;
+} 
+.openmpintro .h1 .p .span{
+    line-height: 150%;
+}
+
+.openmpintro .ul .li .span{
+    font-size: 13pt;
+    line-height: 150%; 
+    font-family: 'Roboto', sans-serif;
+}
+
+.openmpintro .p{
+    text-align: justify; 
+    line-height: 150%;
+}
+
+.openmpintro .p .span{
+    font-size: 13pt; 
+    line-height: 150%; 
+    font-family: 'Roboto', sans-serif;
+}
