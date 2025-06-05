@@ -21,8 +21,8 @@ A web-based portal built using Django CMS for learning High-Performance Computin
 
 ```bash
 # Clone the repo
-git clone https://github.com/your-org/hpc-portal.git
-cd hpc-portal
+git clone https://github.com/vardhman11/HPC_Tutor.git/
+cd mysite
 
 # Create and activate a virtual environment
 python3 -m venv venv
@@ -32,8 +32,11 @@ source venv/bin/activate
 pip install -r requirements.txt
 
 # Rename and configure your settings
-cp settings_template.py settings.py
+cp settings.py settings.py
 # Now edit `settings.py` to include your DB and secret keys
+# Make the changes in enviorment variables
+# For terminal we have used cockpit open source terminal for installation follow https://cockpit-project.org/running
+# Make changes in the terminal url in the enviorment and settings.py file
 
 # Migrate and run
 python manage.py migrate
