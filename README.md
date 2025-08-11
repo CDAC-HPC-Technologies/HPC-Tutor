@@ -1,6 +1,8 @@
 # HPC Learning Portal
 
-A web-based portal built using Django CMS for learning High-Performance Computing (HPC) concepts like OpenMP, MPI, and system architecture. It includes structured content, interactive examples, and a terminal interface for hands-on learning.
+HPC Tutor is an A Unique Web Enabled Platform for Facilitating Remote Hands-on HPC training. In order to proliferate usage of High-Performance Computing (HPC) among research and education community, it is important to prepare and develop diverse community of HPC practitioners. Absence of an adequate teaching and learning ecosystem for HPC inhibits its widespread use and results in inefficient usage of its facilities. The hands-on sessions are one of the significant elements of HPC training in addition to theory/concept.  However, it becomes challenging to accomplish it, in the online method. HPC Tutor provides presentation of learning material and shell access through a single screen. The shell is designed in such a way that users can practice hands-on assignment on a supercomputing facility without a need to login into it. Integration of shells on multiple HPC facilities is provided to ease the user in use of the HPC facility as per their computing requirements.
+The presentation part of Tutor can be customized to provide integration of contents in PPT, PDF format, Audio-visual, web content, reference guide related to HPC as well as role-based tailored contents. 
+This tool aims to enhance user capability to apply parallel programming techniques for development of advanced software algorithm related to their compute intensive workload in HPC environment.
 
 ## 🚀 Features
 
