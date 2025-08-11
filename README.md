@@ -6,11 +6,11 @@ This tool aims to enhance user capability to apply parallel programming techniqu
 
 ## 🚀 Features
 
-- CMS-driven content management (Django CMS)
-- Embedded terminal access
-- Course-wise content organization
-- Admin panel for workshop/course registration
-- Bootstrap-based responsive UI
+•	HPC-Focused Pedagogy: Tailored for students/researchers transitioning to supercomputing.
+•	Practical Exercises: Cloud-based or on-prem HPC access for applied learning.
+•	Modular Design: Self-paced courses with beginner-to-advanced tiers.
+•	Community-Driven: Accepts contributions for new tutorials/tools.
+
 
 ## 📦 Tech Stack
 
