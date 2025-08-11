@@ -6,10 +6,10 @@ This tool aims to enhance user capability to apply parallel programming techniqu
 
 ## 🚀 Features
 
-•	HPC-Focused Pedagogy: Tailored for students/researchers transitioning to supercomputing.
-•	Practical Exercises: Cloud-based or on-prem HPC access for applied learning.
-•	Modular Design: Self-paced courses with beginner-to-advanced tiers.
-•	Community-Driven: Accepts contributions for new tutorials/tools.
+- HPC-Focused Pedagogy: Tailored for students/researchers transitioning to supercomputing
+- Practical Exercises: Cloud-based or on-prem HPC access for applied learning
+- Modular Design: Self-paced courses with beginner-to-advanced tiers
+- Community-Driven: Accepts contributions for new tutorials/tools
 
 
 ## 📦 Tech Stack
