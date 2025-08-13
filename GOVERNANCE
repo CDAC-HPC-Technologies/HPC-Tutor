@@ -1,0 +1,35 @@
+HPC Tutor operates under an open governance model to ensure transparent decision-making and sustainable growth. This document outlines the roles, responsibilities, and processes for project leadership and contributions.
+________________________________________
+Steering Committee (SC)
+Current Roster
+•	Sanjay Wandhekar (Chair)
+•	Ashish Ranjan
+•	Sucheta Pawar
+•	Vardhman Parakh
+Role
+The Steering Committee (SC) oversees strategic direction, administrative operations, and high-level decision-making, including:
+•	Managing organizational settings (e.g., repository permissions, branch protections).
+•	Approving changes to governance policies.
+•	Resolving disputes escalated by the Core Team.
+Decision Process
+•	All decisions are documented in [MEETING_NOTES/DOCS_LINK].
+Core Team (CT)
+Current Roster
+•	Sucheta Pawar
+•	Vardhman Parakh
+•	Ashwini Wable
+•	Aishwarya Bhagwat
+•	Tushar Patle
+Role
+The Core Team (CT) drives technical execution and day-to-day operations, including:
+•	Merging pull requests (requires approval from at least one other CT member).
+•	Leading technical discussions and RFCs (Request for Comments).
+•	Moderating contributions (e.g., labelling issues, reviewing PRs).
+•	Proposing governance changes to the SC.
+________________________________________
+Contributors
+Role
+Contributors are trusted community members who actively:
+•	Submit code, documentation, or tutorials.
+•	Triage issues/PRs (labelling, reviewing).
+•	Participate in discussions.
