@@ -21,6 +21,15 @@ HPC Tutor solves a key challenge in online HPC education: the separation between
 - jQuery
 - Apache or Gunicorn + Nginx (recommended for production)
 
+## Prerequisites
+
+Before you begin, ensure you have the following installed on your system:
+
+- Python (3.8 or higher)
+- pip (Python package manager)
+- Git
+- A Database: SQLite (for development) or PostgreSQL/MySQL (for production)
+
 ## 🛠️ Setup Instructions
 
 ```bash
