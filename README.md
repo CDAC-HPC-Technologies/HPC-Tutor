@@ -21,7 +21,7 @@ HPC Tutor solves a key challenge in online HPC education: the separation between
 - jQuery
 - Apache or Gunicorn + Nginx (recommended for production)
 
-## Prerequisites
+## 📋 Prerequisites
 
 Before you begin, ensure you have the following installed on your system:
 
