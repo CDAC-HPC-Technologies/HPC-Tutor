@@ -6,17 +6,12 @@ HPC Tutor solves a key challenge in online HPC education: the separation between
 
 ## ✨ Features
 
-    Integrated Learning Environment: View tutorials and run commands on integrated HPC resources side-by-side in a single browser tab.
-
-    HPC-Focused Pedagogy: Content tailored for students and researchers transitioning to supercomputing.
-
-    Practical, Hands-On Exercises: Direct, cloud-based, or on-prem HPC shell access for applied learning.
-
-    Multi-Resource Integration: Configure shells for multiple HPC facilities to meet diverse computing needs.
-
-    Modular & Customizable: Self-paced courses with beginner-to-advanced tiers. Easily customize content via Django CMS.
-
-    Community-Driven: We accept contributions for new tutorials, tools, and learning modules.
+- Integrated Learning Environment: View tutorials and run commands on integrated HPC resources side-by-side in a single browser tab
+- HPC-Focused Pedagogy: Content tailored for students and researchers transitioning to supercomputing
+- Practical, Hands-On Exercises: Direct, cloud-based, or on-prem HPC shell access for applied learning
+- Multi-Resource Integration: Configure shells for multiple HPC facilities to meet diverse computing needs
+- Modular & Customizable: Self-paced courses with beginner-to-advanced tiers. Easily customize content via Django CMS
+- Community-Driven: We accept contributions for new tutorials, tools, and learning modules
 
 
 ## 📦 Tech Stack
