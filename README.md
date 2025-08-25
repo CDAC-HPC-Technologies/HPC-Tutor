@@ -1,15 +1,22 @@
-# HPC Learning Portal
+# HPC An Interactive Learning Platform
 
-HPC Tutor is an A Unique Web Enabled Platform for Facilitating Remote Hands-on HPC training. In order to proliferate usage of High-Performance Computing (HPC) among research and education community, it is important to prepare and develop diverse community of HPC practitioners. Absence of an adequate teaching and learning ecosystem for HPC inhibits its widespread use and results in inefficient usage of its facilities. The hands-on sessions are one of the significant elements of HPC training in addition to theory/concept.  However, it becomes challenging to accomplish it, in the online method. HPC Tutor provides presentation of learning material and shell access through a single screen. The shell is designed in such a way that users can practice hands-on assignment on a supercomputing facility without a need to login into it. Integration of shells on multiple HPC facilities is provided to ease the user in use of the HPC facility as per their computing requirements.
-The presentation part of Tutor can be customized to provide integration of contents in PPT, PDF format, Audio-visual, web content, reference guide related to HPC as well as role-based tailored contents. 
-This tool aims to enhance user capability to apply parallel programming techniques for development of advanced software algorithm related to their compute intensive workload in HPC environment.
+HPC Tutor is an A Unique Web-Enabled Platform for Facilitating Remote Hands-on High-Performance Computing (HPC) Training.
 
-## 🚀 Features
+HPC Tutor solves a key challenge in online HPC education: the separation between lecture material and the shell environment. Our platform integrates learning content (PDFs, PPTs, videos) with direct terminal access to real HPC systems through a single, unified browser window. This allows students to learn concepts and immediately practice commands without switching contexts or managing complex logins, lowering the barrier to entry for future HPC practitioners.
 
-- HPC-Focused Pedagogy: Tailored for students/researchers transitioning to supercomputing
-- Practical Exercises: Cloud-based or on-prem HPC access for applied learning
-- Modular Design: Self-paced courses with beginner-to-advanced tiers
-- Community-Driven: Accepts contributions for new tutorials/tools
+## ✨ Features
+
+    Integrated Learning Environment: View tutorials and run commands on integrated HPC resources side-by-side in a single browser tab.
+
+    HPC-Focused Pedagogy: Content tailored for students and researchers transitioning to supercomputing.
+
+    Practical, Hands-On Exercises: Direct, cloud-based, or on-prem HPC shell access for applied learning.
+
+    Multi-Resource Integration: Configure shells for multiple HPC facilities to meet diverse computing needs.
+
+    Modular & Customizable: Self-paced courses with beginner-to-advanced tiers. Easily customize content via Django CMS.
+
+    Community-Driven: We accept contributions for new tutorials, tools, and learning modules.
 
 
 ## 📦 Tech Stack
