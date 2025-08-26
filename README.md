@@ -30,11 +30,11 @@ Before you begin, ensure you have the following installed on your system:
 - Git
 - A Database: SQLite (for development) or PostgreSQL/MySQL (for production)
 
-🛠️ Local Development Setup
+## 🛠️ Local Development Setup
 
 Follow these steps to get HPC Tutor running on your local machine for development and testing.
 1. Clone the Repository
-bash
+``` bash
 
 git clone https://github.com/<your-username>/HPC_Tutor.git
 cd HPC_Tutor
