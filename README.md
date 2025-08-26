@@ -35,7 +35,6 @@ Before you begin, ensure you have the following installed on your system:
 Follow these steps to get HPC Tutor running on your local machine for development and testing.
 1. Clone the Repository
 ```
-
 git clone https://github.com/<your-username>/HPC_Tutor.git
 cd HPC_Tutor
 ```
@@ -59,7 +58,6 @@ Your command prompt should now show (venv).
 ```
 3. Install Python Dependencies
 ```
-
 pip install -r requirements.txt
 ```
 4. Configure Environment Settings
@@ -109,7 +107,6 @@ We recommend using Cockpit for robust terminal access to Linux-based HPC resourc
 
     Install Cockpit on your target Linux machine (e.g., your training cluster's login node):
    ``` 
-
 # On Fedora/RHEL/CentOS
 sudo dnf install cockpit
 
@@ -121,7 +118,7 @@ Start and enable the service:
 
     sudo systemctl enable --now cockpit.socket
 ```
-    Configure HPC Tutor: In your .env file, set the TERMINAL_URL to point to your Cockpit instance (e.g., TERMINAL_URL=https://your-hpc-cluster:9090).
+Configure HPC Tutor: In your .env file, set the TERMINAL_URL to point to your Cockpit instance (e.g., TERMINAL_URL=https://your-hpc-cluster:9090).
 
 Official Documentation: https://cockpit-project.org/running
 
@@ -221,7 +218,6 @@ For a production server, we highly recommend the following:
 
     Use HTTPS: Secure your site with SSL/TLS certificates (e.g., from Let's Encrypt).
 
-A sample docker-compose.yml and nginx.conf configuration can be a great addition for your users in the future.
 
 
 
