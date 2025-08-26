@@ -38,9 +38,9 @@ Follow these steps to get HPC Tutor running on your local machine for developmen
 
 git clone https://github.com/<your-username>/HPC_Tutor.git
 cd HPC_Tutor
-
+```
 2. Set Up a Python Virtual Environment
-
+```
 Create an isolated Python environment to manage dependencies.
 
 On Linux/macOS:
@@ -56,13 +56,14 @@ python -m venv venv
 .\venv\Scripts\activate
 
 Your command prompt should now show (venv).
+```
 3. Install Python Dependencies
-bash
+``` bash
 
 pip install -r requirements.txt
-
+```
 4. Configure Environment Settings
-
+```
     Duplicate the example environment file:
     bash
 
@@ -75,29 +76,31 @@ pip install -r requirements.txt
         DEBUG: Set to True for development.
 
         Configure your database settings (e.g., DATABASE_URL). For simplicity with SQLite, you can often leave the default.
-
+```
 5. Apply Database Migrations
-
+```
 This step sets up the necessary database tables.
 bash
 
 python manage.py migrate
-
+```
 6. Create a Superuser (Optional)
-
+```
 Create an admin account to access the Django CMS admin interface.
 bash
 
 python manage.py createsuperuser
 
 Follow the prompts to set a username, email, and password.
+```
 7. Run the Development Server
-bash
+``` bash
 
 python manage.py runserver
 
 Open your web browser and go to http://127.0.0.1:8000 to see the application. The admin panel is at http://127.0.0.1:8000/admin.
-🌐 Terminal Shell Integration
+```
+## 🌐 Terminal Shell Integration
 
 HPC Tutor requires a web-based terminal backend. We provide two options:
 Option A: For Linux/macOS Hosts (Recommended for Production)
@@ -105,7 +108,7 @@ Option A: For Linux/macOS Hosts (Recommended for Production)
 We recommend using Cockpit for robust terminal access to Linux-based HPC resources.
 
     Install Cockpit on your target Linux machine (e.g., your training cluster's login node):
-    bash
+   ``` bash
 
 # On Fedora/RHEL/CentOS
 sudo dnf install cockpit
@@ -117,10 +120,11 @@ Start and enable the service:
 bash
 
     sudo systemctl enable --now cockpit.socket
-
+```
     Configure HPC Tutor: In your .env file, set the TERMINAL_URL to point to your Cockpit instance (e.g., TERMINAL_URL=https://your-hpc-cluster:9090).
 
 Official Documentation: https://cockpit-project.org/running
+
 Option B: For Windows Hosts (Local Development/Testing)
 
 To provide a shell on a Windows machine, we use a Node.js backend with node-pty.
@@ -129,7 +133,7 @@ Windows Terminal Backend Setup
     Install Node.js: Download and install the LTS version from https://nodejs.org.
 
     Navigate to the Windows terminal backend directory:
-    bash
+```    bash
 
 cd terminal/win-backend
 
@@ -192,17 +196,17 @@ bash
     node server.js
 
     You should see: Windows Terminal Backend running on http://localhost:3000.
-
+```
 Configure HPC Tutor for Windows Terminal
 
     In your HPC Tutor .env file, set the terminal URL:
     text
 
-    TERMINAL_URL=http://localhost:3000
-
+   ``` TERMINAL_URL=http://localhost:3000
+```
     Ensure the Windows terminal server is running before starting your Django development server.
 
-🚀 Production Deployment
+## 🚀 Production Deployment
 
 For a production server, we highly recommend the following:
 
@@ -217,6 +221,7 @@ For a production server, we highly recommend the following:
     Use HTTPS: Secure your site with SSL/TLS certificates (e.g., from Let's Encrypt).
 
 A sample docker-compose.yml and nginx.conf configuration can be a great addition for your users in the future.
+
 ## 🛠️ Setup Instructions
 
 ```bash
