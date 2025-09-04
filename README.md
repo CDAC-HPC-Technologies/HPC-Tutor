@@ -95,9 +95,6 @@ pip install -r requirements.txt
 ```
 cd mysite/
 
-# Create the workshop app
-python manage.py startapp workshop
-
 This step sets up the necessary database tables.
 
 
