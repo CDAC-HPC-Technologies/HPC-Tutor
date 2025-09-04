@@ -79,7 +79,7 @@ pip install -r requirements.txt
     Duplicate the example environment file:
     
 
-    cp env.example .env
+    cp .env.example .env
 
     Edit the .env file with your favorite text editor. You must change the following values:
 
@@ -88,9 +88,12 @@ pip install -r requirements.txt
         DEBUG: Set to True for development.
 
         Configure your database settings (e.g., DATABASE_URL). For simplicity with SQLite, you can often leave the default.
+
+        Terminal_IFRAME_URL: Edit the terminal URL after the terminal installation step which is mentioned in terminal shell integration
 ```
 5. Apply Database Migrations
 ```
+
 This step sets up the necessary database tables.
 
 
