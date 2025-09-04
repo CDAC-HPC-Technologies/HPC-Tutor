@@ -66,7 +66,7 @@ On Windows:
 
 
 python -m venv venv
-.\venv\Scripts\activate
+.\venv\Scripts\activate.bat
 
 Your command prompt should now show (venv).
 ```
