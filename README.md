@@ -93,6 +93,10 @@ pip install -r requirements.txt
 ```
 5. Apply Database Migrations
 ```
+cd mysite/
+
+# Create the workshop app
+python manage.py startapp workshop
 
 This step sets up the necessary database tables.
 
