@@ -26,7 +26,7 @@ INSTALLED_APPS = [
     'treebeard',
     'djangocms_text_ckeditor',
     'django.contrib.sites',
-    'workshop',
+    'workshop'
 ]
 
 MIDDLEWARE = [
@@ -37,6 +37,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
+    'cms.middleware.language.LanguageCookieMiddleware',
     'cms.middleware.utils.ApphookReloadMiddleware',
 ]
 
@@ -45,7 +50,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'mysite' ,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -55,6 +60,10 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'sekizai.context_processors.sekizai',
                 'cms.context_processors.cms_settings',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.csrf', 
+                'django.template.context_processors.tz',   
             ],
         },
     },
@@ -77,6 +86,25 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 LANGUAGE_CODE = 'en-us'
+LANGUAGES = [
+    ('en-us', 'English'),
+]
+
+CMS_LANGUAGES = {
+    1: [
+        {
+            'code': 'en-us',
+            'name': 'English',
+            'public': True,
+        },
+    ],
+    'default': {
+        'public': True,
+        'hide_untranslated': False,
+        'redirect_on_fallback': True,
+    },
+}
+
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
@@ -96,5 +124,3 @@ CMS_TEMPLATES = [
 ]
 
 SITE_ID = 1
-
-
