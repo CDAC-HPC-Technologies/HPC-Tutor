@@ -1,130 +1,407 @@
 {% load i18n cms_tags menu_tags sekizai_tags static %}
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}">
-
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>What is OpenMP</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="HPC-TECH">
-    <meta name="description" content="Introduction to OpenMP">
+    <meta name="description" content="Interactive OpenMP Learning Platform">
 
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
+    <!-- Modern CSS Framework -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+
+    <!-- Custom Styles -->
     <link rel="stylesheet" href="{% static 'css/style2.css' %}">
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
 
-    <!-- JS Files -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
-
-    {% render_block "css" %}
-
-    <a href="/" id="logo" class="brand-logo">
-        <img src="{% static 'images/hpc.jpg' %}" style="width:100%" />
-    </a>
+    <title>{% block title %}What is OpenMP{% endblock %}</title>
 
     <style>
+        :root {
+            --primary-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-bg: #ffffff;
+            --accent-bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --accent-color: #3b82f6;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+            --border-color: #e5e7eb;
+            --code-bg: #f1f5f9;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: white;
-            color: black;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--accent-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        .header {
+            background: var(--secondary-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .logo-section img {
+            height: 45px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent-bg);
+            border: 1px solid var(--border-color);
+        }
+
+        .nav-links a:hover {
+            background: var(--primary-bg);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Main Content Layout */
+        .main-container {
+            min-height: calc(100vh - 120px);
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+
+        .content-panel {
+            flex: 1;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2.5rem;
+            overflow-y: auto;
+            max-height: calc(100vh - 160px);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .terminal-panel {
+            flex: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 160px);
+        }
+
+        /* Content Styling */
+        h1 {
+            background: var(--primary-bg);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        /* Enhanced Code Block Styling */
+        .code-container {
+            position: relative;
+            margin: 2rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .code-header {
+            background: var(--primary-bg);
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+        }
+
+        .copy-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
 
         pre {
-            margin-left: 1em;
-            padding: 0.5em;
-            background-color: #f0f0f0;
-            border: 1px solid black;
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--code-bg);
+            padding: 2rem;
+            margin: 0;
+            overflow-x: auto;
         }
 
-        h1 {
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--code-bg);
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+            color: var(--accent-color);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Terminal Styling */
+        .terminal-header {
+            background: var(--primary-bg);
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+        }
+
+        .terminal-content {
+            flex: 1;
+            background: #000;
+        }
+
+        .terminal-content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Button Styles */
+        .btn-modern {
+            background: var(--primary-bg);
+            border: none;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .btn-modern:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 0;
             text-align: center;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .terminal-panel {
+                height: 400px;
+            }
         }
     </style>
+
+    {% render_block "css" %}
 </head>
 
-<body bgcolor="silver">
+<body>
     {% cms_toolbar %}
-    <div class="container-fluid">
-        <div class="row" style="margin-right: -30px; margin-left: -5px; margin-top: 0px;">
-            <div id="content" class="col-sm-6" style="height: 800px; overflow-x: hidden; overflow-y: auto; text-align:justify;">
-                <font size="+1">
-                    <p align="right">
-                        {% block arrowRight %} {% placeholder "arrowRight" or %}
-                        <a href="/" target="_top">Main Page</a>
-                        <a href="#"><span class="glyphicon glyphicon-arrow-right"></span></a>
-                        {% endplaceholder %} {% endblock arrowRight %}
-                    </p>
 
-                    <a name="top"></a>
-
-                    {% block openmpintro-header %} {% placeholder "openmpintro-header" or %}
-                    <h1>Introduction to OpenMP</h1>
-                    {% endplaceholder %} {% endblock openmpintro-header %}
-
-                    {% block openmpintro-content %} {% placeholder "openmpintro-content" or %}
-                    <p><strong>Let's read a bit</strong></p>
-                    <p>OpenMP is a library that supports shared memory multiprocessing. The OpenMP programming model is SMP (symmetric multi-processors, or shared-memory processors): that means when programming with OpenMP all threads share memory and data.</p>
-                    <p>Parallel code with OpenMP marks, through a special directive, sections to be executed in parallel. The part of the code that’s marked to run in parallel will cause threads to form. The main thread is the master thread. The slave threads all run in parallel and run the same code. Each thread executes the parallelized section of the code independently. When a thread finishes, it joins the master. When all threads finished, the master continues with code following the parallel section.</p>
-                    <p>Each thread has an ID attached to it that can be obtained using a runtime library function (called <code>omp_get_thread_num()</code>). The ID of the master thread is 0.</p>
-                    <p>OpenMP supports C, C++ and Fortran. The OpenMP parts in the code are specified using <code>#pragmas</code>.</p>
-                    {% endplaceholder %} {% endblock openmpintro-content %}
-
-                    {% block openmpintro-codeBlock %} {% placeholder "openmpintro-codeBlock" or %}
-                    <!-- You can insert code examples here -->
-                    {% endplaceholder %} {% endblock openmpintro-codeBlock %}
-
-                    <div style="color: blue;">
-                        {% block content %}{% endblock content %}
+    <!-- Header -->
+    <header class="header">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="logo-section">
+                        <a href="https://paramutkarsh.cdacb.in:9091/en/" target="_blank">
+                            <img src="{% static 'images/hpc.jpg' %}" alt="HPC-TECH Logo" />
+                        </a>
                     </div>
-
-                    <br><hr>
-                </font>
-            </div>
-
-            <div class="col-sm-6" style="min-height: 500px;" id="terminal">
-                <iframe
-                    id="iframeid"
-                    src="{{ TERMINAL_IFRAME_URL|default:'#' }}"
-                    width="100%"
-                    height="100%"
-                    frameborder="0"
-                ></iframe>
-            </div>
-        </div>
-    </div>
-
-    <footer class="footer" style="background-color: #1b2d48d0;">
-        <div class="copy-right_text">
-            <div class="container">
-                <div class="footer_border"></div>
-                <div class="row">
-                    <div class="col-xl-12">
-                        <p class="copy_right text-center">
-                            &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved by HPC-TECH, CDAC
-                        </p>
+                </div>
+                <div class="col-md-6">
+                    <div class="nav-links justify-content-end">
+                        <a href="https://paramutkarsh.cdacb.in/workshop/" target="_blank">
+                            <i class="fas fa-home"></i> Main Page
+                        </a>
+                        <a href="/Memory_Architectures/">
+                            <i class="fas fa-arrow-right"></i> Next
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Content Panel -->
+        <div class="content-panel">
+            <h1>Introduction to OpenMP</h1>
+
+            <div style="background: #f0f9ff; padding: 1rem; border-radius: 12px; margin-bottom: 2rem;">
+                <p><strong>Let's read a bit</strong></p>
+            </div>
+
+            <p>OpenMP is a library that supports shared memory multiprocessing. The OpenMP programming model is SMP (symmetric multi-processors, or shared-memory processors): that means when programming with OpenMP all threads share memory and data.</p>
+
+            <p>Parallel code with OpenMP marks, through a special directive, sections to be executed in parallel. The part of the code that's marked to run in parallel will cause threads to form. The main thread is the master thread. The slave threads all run in parallel and run the same code.</p>
+
+            <div class="code-container">
+                <div class="code-header">
+                    <div class="code-title">
+                        <i class="fas fa-code"></i>
+                        hello_world.c - Basic OpenMP Example
+                    </div>
+                    <button class="copy-btn" onclick="copyCode('code1')">
+                        <i class="fas fa-copy"></i> Copy Code
+                    </button>
+                </div>
+                <pre id="code1"><code>#include &lt;stdio.h&gt;
+#include &lt;omp.h&gt;
+
+int main() {
+    #pragma omp parallel
+    {
+        int id = omp_get_thread_num();
+        printf("Hello, World from thread %d\n", id);
+    }
+    return 0;
+}</code></pre>
+            </div>
+        </div>
+
+        <!-- Terminal Panel -->
+        <div class="terminal-panel">
+            <div class="terminal-header">
+                <div class="terminal-title">
+                    <i class="fas fa-terminal"></i>
+                    <span>Linux/CentOS Terminal</span>
+                </div>
+                <div class="platform-indicator">
+                    Connected
+                </div>
+            </div>
+            <div class="terminal-content">
+                <iframe
+                    id="terminal-iframe"
+                    src="{{ TERMINAL_IFRAME_URL|default:'#' }}"
+                    title="Interactive Terminal"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-0">
+                Copyright &copy; <script>document.write(new Date().getFullYear());</script>
+                All rights reserved by <strong>HPC-TECH, CDAC</strong>
+            </p>
+        </div>
     </footer>
 
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
-        function toggleIframeSize() {
-            var iframeContainer = document.getElementById('iframe-container');
-            iframeContainer.classList.toggle('expanded');
-            var isExpanded = iframeContainer.classList.contains('expanded');
-            document.querySelector('.btn-expand').style.display = isExpanded ? 'block' : 'none';
-            document.querySelector('.btn-minimize').style.display = isExpanded ? 'none' : 'block';
+        // Copy Code Functionality
+        function copyCode(elementId) {
+            const codeElement = document.getElementById(elementId);
+            const textArea = document.createElement('textarea');
+            textArea.value = codeElement.textContent;
+            document.body.appendChild(textArea);
+            textArea.select();
+
+            try {
+                document.execCommand('copy');
+                alert('Code copied to clipboard!');
+            } catch (err) {
+                console.error('Failed to copy: ', err);
+            }
+
+            document.body.removeChild(textArea);
         }
+
+        // Terminal fallback handling
+        document.getElementById('terminal-iframe').addEventListener('error', function() {
+            this.style.display = 'none';
+            const fallback = document.createElement('div');
+            fallback.innerHTML = `
+                <div style="padding: 2rem; text-align: center; color: white;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 3rem;"></i>
+                    <h3>Terminal Unavailable</h3>
+                    <p>Unable to load the terminal interface.</p>
+                    <a href="{{ TERMINAL_IFRAME_URL|default:'#' }}" target="_blank" class="btn-modern">
+                        <i class="fas fa-external-link-alt"></i> Open in New Tab
+                    </a>
+                </div>
+            `;
+            this.parentNode.appendChild(fallback);
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Terminal URL:', '{{ TERMINAL_IFRAME_URL|default:"NOT_SET" }}');
+        });
     </script>
 
     {% render_block "js" %}
 </body>
-
 </html>
-
