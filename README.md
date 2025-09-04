@@ -34,19 +34,24 @@ Before you begin, ensure you have the following installed on your system:
 
 Follow these steps to get HPC Tutor running on your local machine for development and testing.
 1. Clone the Repository
-On Linux/macOS:
-```
-git clone https://github.com/CDAC-HPC-Technologies/HPC-Tutor.git
-cd HPC_Tutor
+
 ```
 On Windows:
-```
+
 1. Visit the repository: https://github.com/CDAC-HPC-Technologies/HPC-Tutor
 2. Click the green "Code" button
 3. Select "Download ZIP"
 4. Extract the downloaded ZIP file
 5. Rename the folder from HPC-Tutor-master to HPC-Tutor
+
+On Linux/macOS:
+git clone https://github.com/CDAC-HPC-Technologies/HPC-Tutor.git
+cd HPC_Tutor
+
+
 ```
+
+
 2. Set Up a Python Virtual Environment
 ```
 Create an isolated Python environment to manage dependencies.
