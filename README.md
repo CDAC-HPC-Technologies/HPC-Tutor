@@ -27,8 +27,7 @@ This tool facilitates the extensive distribution of continuously evolving techno
 Before you begin, ensure you have the following installed on your system:
 
 - Python (3.8 or higher)
-- pip (Python package manager)
-- Git
+- Django
 - A Database: SQLite (for development) or PostgreSQL/MySQL (for production)
 
 ## 🛠️ Local Development Setup
