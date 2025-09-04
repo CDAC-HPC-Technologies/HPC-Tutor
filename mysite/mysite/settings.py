@@ -3,12 +3,12 @@ from pathlib import Path
 from dotenv import load_dotenv
 from django.conf import settings
 
-TERMINAL_IFRAME_URL = os.getenv("TERMINAL_IFRAME_URL", "https://example.com")
 
-load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+load_dotenv()
+TERMINAL_IFRAME_URL = os.getenv("TERMINAL_IFRAME_URL", "https://example.com")
+BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'fallback-secret')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
@@ -62,8 +62,9 @@ TEMPLATES = [
                 'cms.context_processors.cms_settings',
                 'django.template.context_processors.i18n',
                 'django.template.context_processors.media',
-                'django.template.context_processors.csrf', 
-                'django.template.context_processors.tz',   
+                'django.template.context_processors.csrf',
+                'django.template.context_processors.tz',
+                'mysite.context_processors.terminal_url',
             ],
         },
     },
