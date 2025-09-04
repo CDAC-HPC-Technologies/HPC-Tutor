@@ -26,7 +26,6 @@ INSTALLED_APPS = [
     'treebeard',
     'djangocms_text_ckeditor',
     'django.contrib.sites',
-    'workshop'
 ]
 
 MIDDLEWARE = [
@@ -125,3 +124,4 @@ CMS_TEMPLATES = [
 ]
 
 SITE_ID = 1
+
