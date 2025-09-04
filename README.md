@@ -1,8 +1,9 @@
 # HPC An Interactive Learning Platform
 
-HPC Tutor is an A Unique Web-Enabled Platform for Facilitating Remote Hands-on High-Performance Computing (HPC) Training.
+HPC Tutor is an innovative web based unified learning platform, meticulously crafted to equip novice users with practical experience in the field of High-Performance Computing (HPC). This platform expertly combines theoretical knowledge with hands-on application, offering an engaging and comprehensive educational experience in the HPC field. With its interactive learning environment, it seamlessly connects theory and practice by providing real-time supercomputing shell access, code samples, and a variety of presentation materials. Whether you're an educator, researcher, HPC practitioner, or technology developer, this tool is indispensable for sharing your technologies effectively through real-time experiences in the dynamic world of HPC. 
 
-HPC Tutor solves a key challenge in online HPC education: the separation between lecture material and the shell environment. Our platform integrates learning content (PDFs, PPTs, videos) with direct terminal access to real HPC systems through a single, unified browser window. This allows students to learn concepts and immediately practice commands without switching contexts or managing complex logins, lowering the barrier to entry for future HPC practitioners.
+This tool facilitates the extensive distribution of continuously evolving technologies by providing real-time experiences within the HPC sector
+
 
 ## ✨ Features
 
