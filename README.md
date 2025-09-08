@@ -89,7 +89,7 @@ pip install -r requirements.txt
 
         Configure your database settings (e.g., DATABASE_URL). For simplicity with SQLite, you can often leave the default.
 
-        Terminal_IFRAME_URL: Edit the terminal URL after the terminal installation step which is mentioned in terminal shell integration
+        Terminal_IFRAME_URL: Set this after completing the terminal shell integration step below.
 ```
 5. Apply Database Migrations
 ```
