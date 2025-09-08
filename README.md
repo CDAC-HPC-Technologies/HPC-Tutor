@@ -43,6 +43,7 @@ On Windows:
 3. Select "Download ZIP"
 4. Extract the downloaded ZIP file
 5. Rename the folder from HPC-Tutor-master to HPC-Tutor
+6. cd HPC-Tutor
 
 On Linux/macOS:
 git clone https://github.com/CDAC-HPC-Technologies/HPC-Tutor.git
