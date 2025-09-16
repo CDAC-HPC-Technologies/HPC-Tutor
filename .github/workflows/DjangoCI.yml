@@ -1,0 +1,122 @@
+name: Django CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9, 3.11, 3.12]
+      fail-fast: false
+
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: github_actions
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: 'pip'
+        cache-dependency-path: '**/requirements.txt'
+
+    - name: Install System Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libjpeg-dev libpq-dev python3-dev
+
+    - name: Install Python Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install flake8 bandit coverage
+
+    - name: Run Security Scan with Bandit
+      run: |
+        bandit -r . -x "*/migrations/*,*/tests/*" -ll || echo "Bandit found issues - please review"
+
+    - name: Lint with flake8
+      run: |
+        flake8 . --count --max-complexity=10 --max-line-length=127 --statistics --exclude=*/migrations/* || true
+
+    - name: Check for Database Migrations
+      run: |
+        python manage.py makemigrations --check --dry-run
+
+    - name: Run Tests with Coverage
+      env:
+        DATABASE_URL: postgres://postgres:postgres@localhost:5432/github_actions
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        DEBUG: 'False'
+      run: |
+        coverage run --source='.' manage.py test --verbosity=2
+        coverage report -m
+        coverage xml
+
+    - name: Upload Coverage to Codecov
+      uses: codecov/codecov-action@v4
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        file: ./coverage.xml
+        fail_ci_if_error: false
+
+    - name: Check Static Files
+      run: |
+        python manage.py collectstatic --noinput --dry-run
+
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: test-results-${{ matrix.python-version }}
+        path: |
+          coverage.xml
+          !__pycache__/
+
+  code-quality:
+    runs-on: ubuntu-latest
+    needs: test
+    if: always()
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        cache: 'pip'
+        
+    - name: Download test artifacts
+      uses: actions/download-artifact@v4
+      with:
+        path: test-results
+        
+    - name: Generate combined coverage report
+      run: |
+        pip install coverage
+        python -m coverage combine test-results/**/coverage.xml
+        python -m coverage report -m
+        python -m coverage html
+        echo "Combined coverage report generated"
