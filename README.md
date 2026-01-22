@@ -221,7 +221,7 @@ Configure HPC Tutor for Windows Terminal
     
 
    ```
-TERMINAL_URL=http://localhost:3000
+Terminal_IFRAME_URL=http://localhost:3000
 ```
     Ensure the Windows terminal server is running before starting your Django development server.
 
