@@ -139,7 +139,7 @@ Start and enable the service:
 
     sudo systemctl enable --now cockpit.socket
 ```
-Configure HPC Tutor: In your .env file, set the Terminal_IFRAME_URL to point to your Cockpit instance (e.g., TERMINAL_IFRAME_URL=http://localhost:9090).
+Configure HPC Tutor: In your .env file, set the TERMINAL_IFRAME_URL to point to your Cockpit instance (e.g., TERMINAL_IFRAME_URL=http://localhost:9090).
 
 Official Documentation: https://cockpit-project.org/running
 
