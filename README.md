@@ -90,7 +90,7 @@ pip install -r requirements.txt
 
         Configure your database settings (e.g., DATABASE_URL). For simplicity with SQLite, you can often leave the default.
 
-        Terminal_IFRAME_URL: Set this after completing the terminal shell integration step below.
+        TERMINAL_IFRAME_URL: Set this after completing the terminal shell integration step below.(For e.g http://localhost:9090)
 ```
 5. Apply Database Migrations
 ```
@@ -139,7 +139,7 @@ Start and enable the service:
 
     sudo systemctl enable --now cockpit.socket
 ```
-Configure HPC Tutor: In your .env file, set the Terminal_IFRAME_URL to point to your Cockpit instance (e.g., Terminal_IFRAME_URL=https://your-hpc-cluster:9090).
+Configure HPC Tutor: In your .env file, set the Terminal_IFRAME_URL to point to your Cockpit instance (e.g., TERMINAL_IFRAME_URL=http://localhost:9090).
 
 Official Documentation: https://cockpit-project.org/running
 
@@ -221,7 +221,7 @@ Configure HPC Tutor for Windows Terminal
     
 
    ```
-Terminal_IFRAME_URL=http://localhost:3000
+TERMINAL_IFRAME_URL=http://localhost:3000
 ```
     Ensure the Windows terminal server is running before starting your Django development server.
 
