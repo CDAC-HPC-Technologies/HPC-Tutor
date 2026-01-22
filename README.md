@@ -115,7 +115,9 @@ Follow the prompts to set a username, email, and password.
 
 python manage.py runserver
 
-Open your web browser and go to http://127.0.0.1:8000 to see the application. The admin panel is at http://127.0.0.1:8000/admin.
+Open your web browser and go to http://127.0.0.1:8000 to see the application.
+Then enter the Title and Content and save it.
+The admin panel is at http://127.0.0.1:8000/admin.
 ```
 ## 🌐 Terminal Shell Integration
 
@@ -137,7 +139,7 @@ Start and enable the service:
 
     sudo systemctl enable --now cockpit.socket
 ```
-Configure HPC Tutor: In your .env file, set the TERMINAL_URL to point to your Cockpit instance (e.g., TERMINAL_URL=https://your-hpc-cluster:9090).
+Configure HPC Tutor: In your .env file, set the Terminal_IFRAME_URL to point to your Cockpit instance (e.g., Terminal_IFRAME_URL=https://your-hpc-cluster:9090).
 
 Official Documentation: https://cockpit-project.org/running
 
