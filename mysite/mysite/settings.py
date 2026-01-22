@@ -7,7 +7,7 @@ from django.conf import settings
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv()
-TERMINAL_IFRAME_URL = os.getenv("TERMINAL_IFRAME_URL", "https://example.com")
+TERMINAL_IFRAME_URL = os.getenv("TERMINAL_IFRAME_URL", "http://example.com")
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'fallback-secret')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
@@ -124,4 +124,5 @@ CMS_TEMPLATES = [
 ]
 
 SITE_ID = 1
+
 
