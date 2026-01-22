@@ -117,12 +117,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-X_FRAME_OPTIONS = 'SAMEORIGIN'  # Required for iframe terminal support
+X_FRAME_OPTIONS = 'ALLOWALL'
+#X_FRAME_OPTIONS = 'SAMEORIGIN'  # Required for iframe terminal support
 
 CMS_TEMPLATES = [
     ('base.html', 'Default'),
 ]
 
 SITE_ID = 1
+
 
 
