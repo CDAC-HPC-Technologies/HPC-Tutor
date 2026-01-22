@@ -1,1 +1,21 @@
-Photos and Videos of HPC Tutor Interactive Learning Platform
+📸 HPC Tutor – Platform in Action
+
+We’ve collected real screenshots and session captures from the training deployments of HPC Tutor. See them below and in the Gallery folder:
+
+🔗 Gallery folder:
+https://github.com/CDAC-HPC-Technologies/HPC-Tutor/tree/master/Gallery
+
+📌 Screenshots
+### 🧑‍💻 Unified Learning Screen
+![Unified Learning](Gallery/HPC_Tutor_Courses.png)
+
+### 💻 Terminal Access + Slides
+![Terminal in Action](Gallery/OpenMP_Code.png)
+
+### 📅 Hands-On Training Session
+![Training Session](Gallery/Kokkos_Example.jpg)
+
+▶ Demo Recording (Gallery/HPC_Tutor_Part1.mp4)
+▶ [Watch demo video](Gallery/HPC_Tutor_Part1.mp4)
+▶ Admin Section Recording (Gallery/HPC_Tutor_Part2.mp4)
+▶ [Watch demo video](Gallery/HPC_Tutor_Part2.mp4)
