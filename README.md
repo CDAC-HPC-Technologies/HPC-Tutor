@@ -128,11 +128,20 @@ We recommend using Cockpit for robust terminal access to Linux-based HPC resourc
 
     Install Cockpit on your target Linux machine (e.g., your training cluster's login node):
    ``` 
-# On Fedora/RHEL/CentOS
-sudo dnf install cockpit
+Step1:- wget https://github.com/cockpit-project/cockpit/releases/download/235/cockpit-235.tar.xz
+Step2:- tar xf cockpit-235.tar.xz
+Step3:- cd cockpit-235
+Step4:- ./configure
+Step5:- make -j$(nproc)
+Step6:- sudo make install
+Step7:- vi /etc/pam.d/cockpit
+and enter following lines
+auth       include      system-auth
+account    include      system-auth
+password   include      system-auth
+session    include      system-auth
+Step8:- systemctl start cockpit
 
-# On Debian/Ubuntu
-sudo apt-get install cockpit
 
 Start and enable the service:
 
