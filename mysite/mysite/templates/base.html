@@ -229,6 +229,105 @@
             gap: 0.75rem;
         }
 
+	.dropdown-menu {
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    padding: 0.5rem;
+}
+
+.dropdown-item {
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    font-weight: 500;
+}
+/* =========================
+   MARKDOWN CONTENT STYLING
+   ========================= */
+
+.course-markdown h1,
+.course-markdown h2,
+.course-markdown h3 {
+    margin-top: 2.5rem;
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+}
+
+.course-markdown h2 {
+    font-size: 1.8rem;
+}
+
+.course-markdown h3 {
+    font-size: 1.4rem;
+}
+
+.course-markdown ul,
+.course-markdown ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.course-markdown li {
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.course-markdown p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+}
+
+/* INLINE CODE */
+.course-markdown code {
+    background: #0f172a;
+    color: #e5e7eb;
+    padding: 0.3rem 0.5rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+/* CODE BLOCK */
+.course-markdown pre {
+    background: #0f172a !important;
+    color: #e5e7eb;
+    padding: 1.5rem;
+    border-radius: 14px;
+    overflow-x: auto;
+    margin: 2rem 0;
+    font-size: 0.95rem;
+}
+
+.course-markdown pre code {
+    background: none;
+    padding: 0;
+    border: none;
+    color: inherit;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* TABLES */
+.course-markdown table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+}
+
+.course-markdown th,
+.course-markdown td {
+    border: 1px solid var(--border-color);
+    padding: 0.75rem;
+    text-align: left;
+}
+
+.course-markdown th {
+    background: var(--accent-bg);
+    font-weight: 600;
+}
+
+.dropdown-item:hover {
+    background: var(--primary-bg);
+    color: white;
+}
+
         .btn-modern:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-lg);
@@ -253,11 +352,24 @@
             .terminal-panel {
                 height: 400px;
             }
-        }
+
+	}
+	.course-markdown pre::before {
+    content: "Example Output";
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #93c5fd;
+    margin-bottom: 0.75rem;
+}
+
     </style>
 
     {% render_block "css" %}
 </head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
 
 <body>
     {% cms_toolbar %}
@@ -275,7 +387,38 @@
                 </div>
                 <div class="col-md-6">
                     <div class="nav-links justify-content-end">
-                        <a href="#" target="_blank">
+			    
+<!-- Courses Dropdown -->
+  <div class="dropdown">
+    <a class="dropdown-toggle"
+       href="#"
+       role="button"
+       id="coursesDropdown"
+       data-bs-toggle="dropdown"
+       aria-expanded="false">
+
+      <i class="fas fa-book"></i> Courses
+    </a>
+
+    <ul class="dropdown-menu dropdown-menu-end"
+        aria-labelledby="coursesDropdown"
+        style="max-height: 300px; overflow-y: auto;">
+
+      {% for course in ALL_COURSES %}
+        <li>
+          <a class="dropdown-item"
+             href="/courses/{{ course.slug }}/">
+            <i class="fas fa-{{ course.icon }} me-2"></i>
+            {{ course.title }}
+          </a>
+        </li>
+      {% endfor %}
+
+    </ul>
+  </div>
+
+  <!-- Main Page Button -->
+			    <a href="#" target="_blank">
                             <i class="fas fa-home"></i> Main Page
                         </a>
                        
@@ -288,40 +431,13 @@
     <!-- Main Container -->
     <div class="main-container">
         <!-- Content Panel -->
-        <div class="content-panel">
-            <h1>Introduction to OpenMP</h1>
-
-            <div style="background: #f0f9ff; padding: 1rem; border-radius: 12px; margin-bottom: 2rem;">
-                <p><strong>Let's read a bit</strong></p>
-            </div>
-
-            <p>OpenMP is a library that supports shared memory multiprocessing. The OpenMP programming model is SMP (symmetric multi-processors, or shared-memory processors): that means when programming with OpenMP all threads share memory and data.</p>
-
-            <p>Parallel code with OpenMP marks, through a special directive, sections to be executed in parallel. The part of the code that's marked to run in parallel will cause threads to form. The main thread is the master thread. The slave threads all run in parallel and run the same code.</p>
-
-            <div class="code-container">
-                <div class="code-header">
-                    <div class="code-title">
-                        <i class="fas fa-code"></i>
-                        hello_world.c - Basic OpenMP Example
-                    </div>
-                    <button class="copy-btn" onclick="copyCode('code1')">
-                        <i class="fas fa-copy"></i> Copy Code
-                    </button>
-                </div>
-                <pre id="code1"><code>#include &lt;stdio.h&gt;
-#include &lt;omp.h&gt;
-
-int main() {
-    #pragma omp parallel
-    {
-        int id = omp_get_thread_num();
-        printf("Hello, World from thread %d\n", id);
-    }
-    return 0;
-}</code></pre>
-            </div>
-        </div>
+<div class="content-panel">
+    {% block course_content %}
+    <div class="alert alert-info">
+        Select a course from top right corner to begin learning 🚀
+    </div>
+    {% endblock %}
+</div>
 
         <!-- Terminal Panel -->
         <div class="terminal-panel">

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ course|upper }} Course
+{% endblock %}
+
+{% block course_content %}
+<div class="course-markdown">
+    {{ content|safe }}
+</div>
+{% endblock %}
+

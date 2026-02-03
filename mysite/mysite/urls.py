@@ -12,41 +12,46 @@ from django.views.static import serve
 from django.conf.urls.static import static
 from django.urls import path
 
+from .views import course_page
+
 admin.autodiscover()
 
-
-# Custom 404 error view
+# Custom error handlers
 handler404 = 'mysite.views.error_404'
-# Custom 500 error view
 handler500 = 'mysite.views.error_500'
 handler403 = 'mysite.views.error_403'
 
+
+# -----------------------------
+# NON-CMS URLs (NO i18n)
+# -----------------------------
 urlpatterns = [
     url(r'^sitemap\.xml$', sitemap,
         {'sitemaps': {'cmspages': CMSSitemap}}),
-    url(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
-    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
+
+    # Markdown-based courses
+    path("courses/<str:course>/", course_page),
 ]
 
-urlpatterns = i18n_patterns(
-    #path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
+
+# -----------------------------
+# CMS URLs (WITH i18n)
+# -----------------------------
+urlpatterns += i18n_patterns(
     path('super_user/', admin.site.urls),
-    #path('admin/login/', custom_admin_login),
-   # path('filer/', include('filer.urls')),
     path('', include('cms.urls')),
-    #path('accounts/', include('accounts.urls'))
 )
 
 
-
-#urlpatterns += i18n_patterns(
-#    url(r'^admin/', admin.site.urls),  # NOQA
-#    url(r'^', include('cms.urls')),
-#)
-
-# This is only needed when using runserver.
+# -----------------------------
+# Static / Media (DEV ONLY)
+# -----------------------------
 if settings.DEBUG:
-    urlpatterns = [
-        url(r'^media/(?P<path>.*)$', serve,
-            {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
-        ] + staticfiles_urlpatterns() + urlpatterns
+    urlpatterns += staticfiles_urlpatterns()
+    urlpatterns += [
+        url(r'^media/(?P<path>.*)$', serve, {
+            'document_root': settings.MEDIA_ROOT,
+            'show_indexes': True
+        }),
+    ]
+
