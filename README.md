@@ -47,7 +47,7 @@ On Windows:
 
 On Linux/macOS:
 git clone https://github.com/CDAC-HPC-Technologies/HPC-Tutor.git
-cd HPC_Tutor
+cd HPC-Tutor
 
 
 ```
