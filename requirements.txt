@@ -46,3 +46,4 @@ webencodings==0.5.1
 whitenoise==6.5.0
 zipp==3.15.0
 markdown
+pyyaml
